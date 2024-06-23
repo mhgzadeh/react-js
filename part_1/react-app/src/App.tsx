@@ -1,6 +1,7 @@
 import ListGroup from "./components/ListGroup/ListGroup";
 import Alert from "./components/Alert";
 import Button from "./components/Button";
+import Like from "./components/Like";
 import { useState } from "react";
 
 function App() {
@@ -14,9 +15,11 @@ function App() {
     <>
       <div>
         {alertVisibility && (
-          <Alert onClose={() => {
-            setAlertVisibillity(false)
-          }}> 
+          <Alert
+            onClose={() => {
+              setAlertVisibillity(false);
+            }}
+          >
             Hello <span>World</span>
           </Alert>
         )}
@@ -33,6 +36,11 @@ function App() {
           headings="Cities"
           onSelectItem={handleSelectItem}
         />
+        <Like
+          onLog={() => {
+            console.log("Clicked");
+          }}
+        ></Like>
       </div>
     </>
   );
