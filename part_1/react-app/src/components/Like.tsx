@@ -12,8 +12,8 @@ const Like = ({ onLog }: Props) => {
     onLog();
   };
   if (status)
-    return <FaHeart color="#ff6b50" size={40} onClick={toggle}></FaHeart>;
-  return <FaRegHeart size={40} color="#ff6b50" onClick={toggle}></FaRegHeart>;
+    return <FaRegHeart size={40} color="#ff6b50" onClick={toggle}></FaRegHeart>;
+  return <FaHeart color="#ff6b50" size={40} onClick={toggle}></FaHeart>;
 };
 
 export default Like;
