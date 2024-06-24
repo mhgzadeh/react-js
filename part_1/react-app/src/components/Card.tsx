@@ -1,5 +1,3 @@
-import React from "react";
-
 interface Props {
   cardsItems: string[];
   onClear: () => void;
@@ -14,7 +12,7 @@ const Card = ({ cardsItems, onClear }: Props) => {
           <li key={item}>{item}</li>
         ))}
       </ul>
-      <button onClick={onClear}></button>
+      <button onClick={onClear}>Clear Products</button>
     </>
   );
 };

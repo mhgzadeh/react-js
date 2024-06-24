@@ -1,9 +1,9 @@
-import React from 'react'
-
-const NavBar = () => {
-  return (
-    <div>NavBar</div>
-  )
+interface Props {
+  itemCount: number;
 }
 
-export default NavBar
+const NavBar = ({ itemCount }: Props) => {
+  return <div>NavBar: {itemCount}</div>;
+};
+
+export default NavBar;

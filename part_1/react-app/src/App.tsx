@@ -45,6 +45,13 @@ function App() {
             console.log("Clicked");
           }}
         ></Like>
+        <NavBar itemCount={cartItems.length} />
+        <Card
+          cardsItems={cartItems}
+          onClear={() => {
+            setCardItems([]);
+          }}
+        />
       </div>
     </>
   );
