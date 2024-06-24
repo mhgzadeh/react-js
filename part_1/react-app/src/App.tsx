@@ -2,6 +2,8 @@ import ListGroup from "./components/ListGroup/ListGroup";
 import Alert from "./components/Alert";
 import Button from "./components/Button";
 import Like from "./components/Like";
+import Card from "./components/Card";
+import NavBar from "./components/NavBar";
 import { useState } from "react";
 
 function App() {
@@ -9,6 +11,8 @@ function App() {
   const handleSelectItem = (item: string) => {
     console.log(item);
   };
+
+  const [cartItems, setCardItems] = useState(["Product1", "Product2"]);
 
   const [alertVisibility, setAlertVisibillity] = useState(false);
   return (
