@@ -15,6 +15,37 @@ function App() {
   const [cartItems, setCardItems] = useState(["Product1", "Product2"]);
 
   const [alertVisibility, setAlertVisibillity] = useState(false);
+
+  const [game, setGame] = useState({
+    id: 1,
+    player: { name: "John" },
+  });
+
+  const [pizza, setPizza] = useState({
+    name: "Spicy Pepperoni",
+    topping: ["Mushroom"],
+  });
+
+  const [card, setCard] = useState({
+    discount: 0.1,
+    items: [
+      { id: 1, title: "Product1", quantity: 1 },
+      { id: 2, title: "Product2", quantity: 1 },
+    ],
+  });
+
+  const handelClick = () => {
+    setGame({ ...game, player: { ...game.player, name: "Bob" } });
+    setPizza({ ...pizza, topping: [...pizza.topping, "chesse"] });
+    setCard({
+      ...card,
+      items: card.items.map((item) =>
+        item.id === 1 ? { ...item, quantity: item.quantity + 1 } : item
+      ),
+    });
+    console.log(game, pizza, card);
+  };
+
   return (
     <>
       <div>
@@ -29,9 +60,10 @@ function App() {
         )}
         <Button
           color="danger"
-          onClick={() => {
-            setAlertVisibillity(true);
-          }}
+          // onClick={() => {
+          //   setAlertVisibillity(true);
+          // }}
+          onClick={handelClick}
         >
           Click on me
         </Button>

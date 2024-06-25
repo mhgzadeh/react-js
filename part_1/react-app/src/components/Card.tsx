@@ -12,7 +12,7 @@ const Card = ({ cardsItems, onClear }: Props) => {
           <li key={item}>{item}</li>
         ))}
       </ul>
-      <button onClick={onClear}>Clear Products</button>
+      <button onClick={onClear}>Clear Productsch</button>
     </>
   );
 };
