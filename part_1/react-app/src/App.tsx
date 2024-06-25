@@ -4,6 +4,7 @@ import Button from "./components/Button";
 import Like from "./components/Like";
 import Card from "./components/Card";
 import NavBar from "./components/NavBar";
+import ExpandeableText from "./components/ExpandeableText";
 import { useState } from "react";
 
 function App() {
@@ -46,6 +47,8 @@ function App() {
     console.log(game, pizza, card);
   };
 
+  const [expand, setExpand] = useState(false)
+
   return (
     <>
       <div>
@@ -84,6 +87,22 @@ function App() {
             setCardItems([]);
           }}
         />
+        <br />
+        <br />
+        <ExpandeableText maxChars={30}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem suscipit
+          quo nesciunt doloribus, veritatis nulla! Temporibus voluptatum alias
+          rerum! Reiciendis, ea vero? Itaque minima ipsum laudantium nobis optio
+          illo iure necessitatibus pariatur sunt repellat odit consequatur vel,
+          temporibus placeat! Nulla, provident! A molestias accusamus ut iure,
+          sunt et blanditiis quod impedit perferendis culpa illum sapiente,
+          porro itaque repellendus vero facilis, corporis eligendi quaerat?
+          Laudantium esse ipsum id expedita repudiandae culpa, itaque, soluta
+          animi officiis, eum aliquam. Rem aut sed laudantium voluptatum dolorem
+          esse provident aspernatur quos assumenda blanditiis sapiente, nemo
+          vitae molestias asperiores perspiciatis cupiditate consequuntur ad eos
+          optio temporibus!
+        </ExpandeableText>
       </div>
     </>
   );
