@@ -1,8 +1,11 @@
-function App() {
+import Form from "./components/Form";
 
+function App() {
   return (
-    <div>mohammad</div>
-  )
+    <div className="container">
+      <Form />
+    </div>
+  );
 }
 
-export default App
+export default App;
