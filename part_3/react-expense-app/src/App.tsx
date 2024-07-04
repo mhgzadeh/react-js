@@ -8,8 +8,13 @@ function App() {
     { id: 4, description: "ddd", amount: 10, category: "utility" },
   ];
   return (
-    <div className="container">
-      <ExpenseList expenses={expenses} />
+    <div className="container my-5">
+      <ExpenseList
+        expenses={expenses}
+        onDelete={(id) => {
+          console.log("Delete", id);
+        }}
+      />
     </div>
   );
 }
