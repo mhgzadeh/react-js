@@ -13,7 +13,7 @@ function App() {
       <ExpenseList
         expenses={expenses}
         onDelete={(id) => {
-          setExpenses(expenses.filter(expense => expense.id !== id ))
+          setExpenses(expenses.filter((expense) => expense.id !== id));
         }}
       />
     </div>
