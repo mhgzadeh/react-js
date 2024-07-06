@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { date, z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import categories from "../categories";
@@ -12,23 +12,31 @@ const schema = z.object({
     .number({ invalid_type_error: "Amount is required" })
     .min(0.01)
     .max(100_000),
-  // category: z.enum(categories, {
-  //   errorMap: () => ({ message: "Category is required" }),
-  // }),
   category: z.enum(categories, { message: "Category is required" }),
 });
 
 type ExpenseFormData = z.infer<typeof schema>;
 
-const ExpenseForm = () => {
+interface Props {
+  onSubmit: (data: ExpenseFormData) => void;
+}
+
+const ExpenseForm = ({ onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ExpenseFormData>({ resolver: zodResolver(schema) });
 
   return (
-    <form className="mb-5" onSubmit={handleSubmit((data) => console.log(data))}>
+    <form
+      className="mb-5"
+      onSubmit={handleSubmit((data) => {
+        onSubmit(data);
+        reset();
+      })}
+    >
       <div className="mb-3">
         <label htmlFor="description" className="form-label">
           Description
@@ -61,8 +69,8 @@ const ExpenseForm = () => {
         <label htmlFor="category" className="form-label">
           Category
         </label>
-        <select id="category" className="form-select">
-          <option></option>
+        <select {...register("category")} id="category" className="form-select">
+          <option value=""></option>
           {categories.map((category) => (
             <option key={category} value={category}>
               {category}
