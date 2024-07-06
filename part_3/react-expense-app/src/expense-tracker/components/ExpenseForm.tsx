@@ -1,8 +1,8 @@
-import { categories } from "../../App";
+import categories from "../categories";
 
 const ExpenseForm = () => {
   return (
-    <form className="mb-5"> 
+    <form className="mb-5">
       <div className="mb-3">
         <label htmlFor="description" className="form-label">
           Description

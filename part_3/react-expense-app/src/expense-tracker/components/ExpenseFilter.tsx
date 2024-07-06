@@ -1,4 +1,4 @@
-import { categories } from "../../App";
+import categories from "../categories";
 
 interface Props {
   onSelectCategory: (category: string) => void;
@@ -9,7 +9,7 @@ const ExpenseFilter = ({ onSelectCategory }: Props) => {
     <select
       className="form-select"
       onChange={(event) => {
-            onSelectCategory(event.target.value);
+        onSelectCategory(event.target.value);
       }}
     >
       <option value="">All categories</option>
