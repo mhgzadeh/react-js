@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ExpenseList from "./components/ExpenseList";
-import ExpenseFilter from "./components/ExpenseFilter";
-import ExpenseForm from "./components/ExpenseForm";
+import ExpenseList from "./expense-tracker/components/ExpenseList";
+import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
+import ExpenseForm from "./expense-tracker/components/ExpenseForm";
 
 export const categories = ["utility", "grocery", "entertainment"] as const
 
