@@ -12,9 +12,10 @@ const schema = z.object({
     .number({ invalid_type_error: "Amount is required" })
     .min(0.01)
     .max(100_000),
-  category: z.enum(categories, {
-    errorMap: () => ({ message: "Category is required" }),
-  }),
+  // category: z.enum(categories, {
+  //   errorMap: () => ({ message: "Category is required" }),
+  // }),
+  category: z.enum(categories, { message: "Category is required" }),
 });
 
 type ExpenseFormData = z.infer<typeof schema>;
