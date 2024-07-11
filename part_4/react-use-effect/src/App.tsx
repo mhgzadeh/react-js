@@ -30,7 +30,7 @@ const App = () => {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
 
-    apiClient.delete("/users/" + user.id).catch((err: Error) => {
+    userService.deleteUser(user.id).catch((err: Error) => {
       setError(err.message);
       setUsers(originalUsers);
     });
@@ -43,8 +43,9 @@ const App = () => {
 
     // .then is needed because a new user has been added to backend that can
     // have different id. this new id is generated automatically via backend not frontend
-    apiClient
-      .post("/users/", newUser)
+
+    userService
+      .createUser(newUser)
       .then(({ data: saveUser }) => setUsers([saveUser, ...users])) // .then((response) => setUsers([response.data, ...users]))
       .catch((err: Error) => {
         setError(err.message);
@@ -57,7 +58,7 @@ const App = () => {
     const updatedUser = { ...user, name: user.name + "!" };
     setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
 
-    apiClient.patch("/users/" + user.id, updatedUser).catch((err: Error) => {
+    userService.updateUser(updatedUser).catch((err: Error) => {
       setError(err.message);
       setUsers(originalUsers);
     });
