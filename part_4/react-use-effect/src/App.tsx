@@ -1,5 +1,6 @@
-import axios, { CanceledError } from "axios";
+import { CanceledError } from "axios";
 import { useState, useEffect } from "react";
+import apiClient from "./services/api-client";
 
 interface User {
   id: number;
@@ -15,8 +16,8 @@ const App = () => {
     const controller = new AbortController();
 
     setIsLoading(true);
-    axios
-      .get<User[]>("https://jsonplaceholder.typicode.com/users", {
+    apiClient
+      .get<User[]>("/users", {
         signal: controller.signal,
       })
       .then((response) => {
@@ -37,8 +38,8 @@ const App = () => {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
 
-    axios
-      .delete("https://jsonplaceholder.typicode.com/users/" + user.id)
+    apiClient
+      .delete("/users/" + user.id)
       .catch((err: Error) => {
         setError(err.message);
         setUsers(originalUsers);
@@ -52,8 +53,8 @@ const App = () => {
 
     // .then is needed because a new user has been added to backend that can
     // have different id. this new id is generated automatically via backend not frontend
-    axios
-      .post("https://jsonplaceholder.typicode.com/users/", newUser)
+    apiClient
+      .post("/users/", newUser)
       .then(({ data: saveUser }) => setUsers([saveUser, ...users])) // .then((response) => setUsers([response.data, ...users]))
       .catch((err: Error) => {
         setError(err.message);
@@ -66,9 +67,9 @@ const App = () => {
     const updatedUser = { ...user, name: user.name + "!" };
     setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
 
-    axios
+    apiClient
       .patch(
-        "https://jsonplaceholder.typicode.com/users/" + user.id,
+        "/users/" + user.id,
         updatedUser
       )
       .catch((err: Error) => {
