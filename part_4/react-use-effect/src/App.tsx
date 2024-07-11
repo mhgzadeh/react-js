@@ -34,20 +34,38 @@ const App = () => {
   }, []);
 
   const deleteUser = (user: User) => {
-    const originalUsers = [...users]
+    const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
 
-    axios.delete('https://jsonplaceholder.typicode.com/users/' + user.id)
-    .catch((err) => { 
-      setError(err.message)
-      setUsers(originalUsers)
-     })
+    axios
+      .delete("https://jsonplaceholder.typicode.com/users/" + user.id)
+      .catch((err) => {
+        setError(err.message);
+        setUsers(originalUsers);
+      });
+  };
+
+  const addUser = () => {
+    const originalUsers = [...users];
+    const newUser = { id: 0, name: "Mohammad" };
+    setUsers([...users, newUser]);
+
+    axios
+      .post("https://jsonplaceholder.typicode.com/users/", newUser)
+      .then(({ data: saveUser }) => setUsers([saveUser, ...users])) // .then((response) => setUsers([response.data, ...users]))
+      .catch((err) => {
+        setError(err.message);
+        setUsers(originalUsers);
+      });
   };
 
   return (
     <div className="container mt-5">
       {isLoading && <div className="spinner-border"></div>}
       {error && <p className="text-danger">{error}</p>}
+      <button className="btn btn-primary my-3" onClick={addUser}>
+        Post/Add User
+      </button>
       <ul className="list-group">
         {users.map((user) => (
           <li
