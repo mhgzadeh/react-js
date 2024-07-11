@@ -39,7 +39,7 @@ const App = () => {
 
     axios
       .delete("https://jsonplaceholder.typicode.com/users/" + user.id)
-      .catch((err) => {
+      .catch((err: Error) => {
         setError(err.message);
         setUsers(originalUsers);
       });
@@ -50,10 +50,28 @@ const App = () => {
     const newUser = { id: 0, name: "Mohammad" };
     setUsers([...users, newUser]);
 
+    // .then is needed because a new user has been added to backend that can
+    // have different id. this new id is generated automatically via backend not frontend
     axios
       .post("https://jsonplaceholder.typicode.com/users/", newUser)
       .then(({ data: saveUser }) => setUsers([saveUser, ...users])) // .then((response) => setUsers([response.data, ...users]))
-      .catch((err) => {
+      .catch((err: Error) => {
+        setError(err.message);
+        setUsers(originalUsers);
+      });
+  };
+
+  const updateUser = (user: User) => {
+    const originalUsers = [...users];
+    const updatedUser = { ...user, name: user.name + "!" };
+    setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
+
+    axios
+      .patch(
+        "https://jsonplaceholder.typicode.com/users/" + user.id,
+        updatedUser
+      )
+      .catch((err: Error) => {
         setError(err.message);
         setUsers(originalUsers);
       });
@@ -73,12 +91,20 @@ const App = () => {
             key={user.id}
           >
             {user.name}
-            <button
-              className="btn btn-outline-danger"
-              onClick={() => deleteUser(user)}
-            >
-              Delete
-            </button>
+            <div>
+              <button
+                className="btn btn-secondary me-3"
+                onClick={() => updateUser(user)}
+              >
+                Update
+              </button>
+              <button
+                className="btn btn-outline-danger"
+                onClick={() => deleteUser(user)}
+              >
+                Delete
+              </button>
+            </div>
           </li>
         ))}
       </ul>
