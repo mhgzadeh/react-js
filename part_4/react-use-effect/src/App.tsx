@@ -1,6 +1,5 @@
 import { CanceledError } from "axios";
 import { useState, useEffect } from "react";
-import apiClient from "./services/api-client";
 import userService, { User } from "./services/user-service";
 
 const App = () => {
@@ -10,7 +9,7 @@ const App = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    const { request, cancel } = userService.getAllUsers();
+    const { request, cancel } = userService.getAll<User>();
     request
       .then((response) => {
         setUsers(response.data);
@@ -30,7 +29,7 @@ const App = () => {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
 
-    userService.deleteUser(user.id).catch((err: Error) => {
+    userService.delete(user.id).catch((err: Error) => {
       setError(err.message);
       setUsers(originalUsers);
     });
@@ -45,7 +44,7 @@ const App = () => {
     // have different id. this new id is generated automatically via backend not frontend
 
     userService
-      .createUser(newUser)
+      .create(newUser)
       .then(({ data: saveUser }) => setUsers([saveUser, ...users])) // .then((response) => setUsers([response.data, ...users]))
       .catch((err: Error) => {
         setError(err.message);
@@ -58,7 +57,7 @@ const App = () => {
     const updatedUser = { ...user, name: user.name + "!" };
     setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
 
-    userService.updateUser(updatedUser).catch((err: Error) => {
+    userService.update(updatedUser).catch((err: Error) => {
       setError(err.message);
       setUsers(originalUsers);
     });
