@@ -5,6 +5,7 @@ import { CanceledError } from "axios";
 export interface Game {
   id: number;
   name: string;
+  background_image: string;
 }
 
 interface FetchGameResponse {
@@ -27,7 +28,7 @@ const useGame = () => {
         if (err instanceof CanceledError) return;
         setError(err.message);
       });
-      
+
     return () => controller.abort();
   }, []);
 
