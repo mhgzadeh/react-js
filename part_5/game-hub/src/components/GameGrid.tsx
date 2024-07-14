@@ -1,4 +1,4 @@
-import { SimpleGrid, Text, UnorderedList } from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
 import useGame from "../hooks/useGame";
 import GameCard from "./GameCard";
 
@@ -12,7 +12,7 @@ const GameGrid = () => {
           sm: 1,
           md: 2,
           lg: 3,
-          xl: 5,
+          xl: 4,
         }}
         spacing={10}
       >

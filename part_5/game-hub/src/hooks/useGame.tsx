@@ -20,7 +20,7 @@ const useGame = () => {
     const controller = new AbortController();
 
     apiClient
-      .get<FetchGameResponse>("/games")
+      .get<FetchGameResponse>("/games", {signal: controller.signal})
       .then((res) => {
         setGames(res.data.results);
       })
