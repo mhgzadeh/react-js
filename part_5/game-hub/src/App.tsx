@@ -4,27 +4,35 @@ import GameGrid from "./components/GameGrid";
 
 function App() {
   return (
-    <Container
-      maxW={{
-        base: "100%",
-        md: "90%",
-        lg: "80%",
-      }}
-    >
+    <Container maxW={"8xl"}>
       <Grid
-        templateAreas={{
-          base: `"nav" "main"`,
-          lg: `"nav nav" "aside main"`,
+        templateRows="repeat(3)"
+        templateColumns={{
+          base: "repeat(1, 1fr)",
+          lg: "repeat(5, 1fr)",
+        }}
+        columnGap={{
+          base: 0,
+          lg: 4,
+        }}
+        rowGap={{
+          base: 0,
+          lg: 4,
         }}
       >
-        <GridItem area={"nav"}>
+        <GridItem rowSpan={1} colSpan={5}>
           <NavBar />
         </GridItem>
         <Show above="lg">
-          <GridItem area={"aside"}>Aside</GridItem>
+          <GridItem rowSpan={1} colSpan={1}>
+            Aside
+          </GridItem>
         </Show>
-        <GridItem area={"main"}>
-          <GameGrid />
+        <GridItem rowSpan={1} colSpan={4}>
+          <GameGrid/>
+        </GridItem>
+        <GridItem rowSpan={1} colSpan={5} bg={"lightcoral"}>
+          footer
         </GridItem>
       </Grid>
     </Container>
