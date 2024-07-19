@@ -31,7 +31,7 @@ function App() {
         <GridItem rowSpan={1} colSpan={4}>
           <GameGrid/>
         </GridItem>
-        <GridItem rowSpan={1} colSpan={5} bg={"lightcoral"}>
+        <GridItem rowSpan={1} colSpan={5}>
           footer
         </GridItem>
       </Grid>
