@@ -3,12 +3,7 @@ import { CheckCircleIcon } from "@chakra-ui/icons";
 import useTodos from "../hooks/useTodos";
 
 const TodoList = () => {
-
-  const {
-    data: todos,
-    error,
-    isLoading,
-  } = useTodos()
+  const { data: todos, error, isLoading } = useTodos();
 
   if (isLoading)
     return (
