@@ -1,23 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { Todo } from "../App";
 import { List, ListItem, Spinner } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
+import useTodos from "../hooks/useTodos";
 
 const TodoList = () => {
-  const fetchTodos = () =>
-    axios
-      .get<Todo[]>("https://jsonplaceholder.typicode.com/todos")
-      .then((response) => response.data);
 
   const {
     data: todos,
     error,
     isLoading,
-  } = useQuery<Todo[], Error>({
-    queryKey: ["todos"],
-    queryFn: fetchTodos,
-  });
+  } = useTodos()
 
   if (isLoading)
     return (
