@@ -10,7 +10,7 @@ export interface Todo {
 
 function App() {
   return (
-    <Container maxW={"8xl"}>
+    <Container maxW={"6xl"}>
       <Grid>
         <GridItem mt={10}>
           <TodoList />
