@@ -8,15 +8,21 @@ interface Posts {
   body: string;
 }
 
-const usePosts = () => {
-  const fetchPosts = () =>
-    axios
-      .get<Posts[]>("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.data);
-
+const usePosts = (userId: number | undefined) => {
   return useQuery<Posts[], Error>({
-    queryKey: ["posts"],
-    queryFn: fetchPosts,
+    // /users/1/posts
+    queryKey: userId ? ["users", userId, "posts"] : ["posts"],
+    // axios use the https://jsonplaceholder.typicode.com/posts?userId=2 
+    // for filter the posts based on users
+    queryFn: () =>
+      axios
+        .get<Posts[]>("https://jsonplaceholder.typicode.com/posts", {
+          params: {
+            userId,
+          },
+        })
+        .then((response) => response.data),
+    staleTime: 1 * 60 * 1000, //1m
   });
 };
 

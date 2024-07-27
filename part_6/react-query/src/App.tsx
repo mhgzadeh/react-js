@@ -5,12 +5,12 @@ import PostList from "./components/PostList";
 function App() {
   return (
     <Container maxW={"6xl"}>
-      <Grid templateColumns='repeat(2, 1fr)'>
+      <Grid templateColumns="repeat(2, 1fr)">
         <GridItem mt={10}>
           <TodoList />
         </GridItem>
         <GridItem mt={10}>
-          <PostList/>
+          <PostList />
         </GridItem>
       </Grid>
     </Container>
