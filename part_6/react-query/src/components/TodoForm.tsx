@@ -1,6 +1,5 @@
 import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import {
-  QueryClient,
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
@@ -15,7 +14,7 @@ const TodoForm = () => {
       axios
         .post("https://jsonplaceholder.typicode.com/todos", todo)
         .then((response) => response.data),
-    onSuccess: (savedTodos, newTodo) => {
+    onSuccess: (savedTodos) => {
       // APPROACH: Invalidating the cache
       //   queryClient.invalidateQueries({
       //     queryKey: ['todos']
