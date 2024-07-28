@@ -9,7 +9,7 @@ interface PostQuery {
 const usePostsInfiniteQuery = (query: PostQuery) => {
   return useInfiniteQuery<Posts[], Error>({
     queryKey: ["posts", query],
-    queryFn: ({ pageParam }) =>
+    queryFn: ({ pageParam }: {pageParam: number}) =>
       axios
     .get<Posts[]>("https://jsonplaceholder.typicode.com/posts", {
       params: {
