@@ -17,7 +17,7 @@ const TodoForm = () => {
   const addTodo = useMutation<Todo, Error, Todo>({
     mutationFn: (todo: Todo) =>
       axios
-        .post("https://jsonplaceholder.typicode.com/xtodos", todo)
+        .post("https://jsonplaceholder.typicode.com/todos", todo)
         .then((response) => response.data),
     onSuccess: (savedTodos) => {
       // APPROACH: Invalidating the cache
@@ -28,6 +28,8 @@ const TodoForm = () => {
         savedTodos,
         ...(todos || []),
       ]);
+
+      if (ref.current) ref.current.value = "";
     },
   });
 
@@ -56,7 +58,14 @@ const TodoForm = () => {
         <FormControl mb={3}>
           <FormLabel>New Todos</FormLabel>
           <Input ref={ref} type="text" />
-          <Button mt={2} colorScheme="teal" type="submit" size="sm">
+          <Button
+            disabled={addTodo.isPending}
+            isLoading={addTodo.isPending}
+            mt={2}
+            colorScheme="teal"
+            type="submit"
+            size="sm"
+          >
             Submit
           </Button>
         </FormControl>
