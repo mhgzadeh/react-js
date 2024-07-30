@@ -8,16 +8,16 @@ interface Props {
   selectedPlatform: Platform | null;
 }
 
-const PlatformSelector = ({ onSelectPlatform, selectedPlatform}: Props) => {
+const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   const { data } = usePlatform();
 
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />} mb={3}>
-        {selectedPlatform?.name || 'Platforms'}
+        {selectedPlatform?.name || "Platforms"}
       </MenuButton>
       <MenuList>
-        {data.map((platform) => (
+        {data?.results.map((platform) => (
           <MenuItem
             key={platform.id}
             onClick={() => {
