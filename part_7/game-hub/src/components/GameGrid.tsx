@@ -1,5 +1,5 @@
 import { Button, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
-import useGame from "../hooks/useGame";
+import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import { GameQuery } from "../App";
@@ -18,7 +18,7 @@ const GameGrid = ({ gameQuery }: Props) => {
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
-  } = useGame(gameQuery);
+  } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   const fetchedGamesCount =
@@ -31,7 +31,7 @@ const GameGrid = ({ gameQuery }: Props) => {
         dataLength={fetchedGamesCount}
         hasMore={!!hasNextPage}
         next={() => fetchNextPage()}
-        loader={<Spinner mt={3}/>}
+        loader={<Spinner mt={3} />}
       >
         <SimpleGrid
           columns={{
