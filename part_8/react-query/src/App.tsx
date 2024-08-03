@@ -1,5 +1,6 @@
 import { Container, Grid, GridItem } from "@chakra-ui/react";
 import Counter from "./state-management/components/Counter";
+import TaskList from "./state-management/components/TaskList";
 
 function App() {
   return (
@@ -8,7 +9,9 @@ function App() {
         <GridItem mt={10}>
           <Counter />
         </GridItem>
-        <GridItem mt={10}></GridItem>
+        <GridItem mt={10}>
+          <TaskList />
+        </GridItem>
         <GridItem mt={10}></GridItem>
         <GridItem mt={10}></GridItem>
       </Grid>
