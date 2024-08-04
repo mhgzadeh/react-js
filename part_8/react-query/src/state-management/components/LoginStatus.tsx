@@ -1,9 +1,8 @@
 import { Button, HStack, Text } from "@chakra-ui/react";
-import { useContext } from "react";
-import AuthContext from "../contexts/authContext";
+import useAuth from "../hooks/useAuth";
 
 const Loginstatus = () => {
-  const { user, dispatch } = useContext(AuthContext);
+  const { user, dispatch } = useAuth();
 
   if (user)
     return (
