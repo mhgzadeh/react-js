@@ -1,9 +1,10 @@
-import { useReducer } from "react";
-import authReducer from "../reducers/authReducer";
 import { Button, HStack, Text } from "@chakra-ui/react";
+import { useContext } from "react";
+import AuthContext from "../contexts/authContext";
 
 const Loginstatus = () => {
-  const [user, dispatch] = useReducer(authReducer, "");
+  const { user, dispatch } = useContext(AuthContext);
+
   if (user)
     return (
       <HStack>
@@ -17,6 +18,7 @@ const Loginstatus = () => {
         <Text>{user}</Text>
       </HStack>
     );
+
   return (
     <Button
       onClick={() => dispatch({ type: "LOGIN", username: "Mohammad" })}

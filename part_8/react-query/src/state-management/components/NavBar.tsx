@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Loginstatus from "./Loginstatus";
+import Loginstatus from "./LoginStatus";
 import TasksContext from "../contexts/tasksContext";
 import { Box, Text } from "@chakra-ui/react";
 

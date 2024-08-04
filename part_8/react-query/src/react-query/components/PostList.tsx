@@ -1,7 +1,7 @@
-import { List, ListItem, Select, Spinner } from "@chakra-ui/react";
-import usePosts from "../hooks/usePosts";
 import { CheckCircleIcon } from "@chakra-ui/icons";
+import { List, ListItem, Select, Spinner } from "@chakra-ui/react";
 import { useState } from "react";
+import usePosts from "../hooks/usePosts";
 
 const PostList = () => {
   const [userId, setUserId] = useState<number>();

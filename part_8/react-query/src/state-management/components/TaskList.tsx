@@ -1,17 +1,22 @@
 import { Box, Button, Flex, List, ListItem, Text } from "@chakra-ui/react";
 import { useContext } from "react";
 import TasksContext from "../contexts/tasksContext";
+import AuthContext from "../contexts/authContext";
 
 const TaskList = () => {
   const { tasks, dispatch } = useContext(TasksContext);
-  
+  const { user } = useContext(AuthContext);
+
   return (
     <Box>
       <Button
         onClick={() =>
           dispatch({
             type: "ADD",
-            task: { id: Date.now(), title: "Task " + Date.now() },
+            task: {
+              id: Date.now(),
+              title: "Task " + Date.now() + " by: " + user,
+            },
           })
         }
         colorScheme="green"
