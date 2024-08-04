@@ -1,10 +1,10 @@
 import { Box, Button, Flex, List, ListItem, Text } from "@chakra-ui/react";
-import { useReducer } from "react";
-import tasksReducer from "../reducers/tasksReducer";
+import { useContext } from "react";
+import TasksContext from "../contexts/tasksContext";
 
 const TaskList = () => {
-  const [tasks, dispatch] = useReducer(tasksReducer, []);
-
+  const { tasks, dispatch } = useContext(TasksContext);
+  
   return (
     <Box>
       <Button
