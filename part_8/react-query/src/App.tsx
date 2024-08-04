@@ -1,16 +1,14 @@
 import { Container, Grid, GridItem, Text } from "@chakra-ui/react";
 import { useReducer } from "react";
+import AuthProvider from "./state-management/components/AuthProvider";
 import Counter from "./state-management/components/Counter";
-import TaskList from "./state-management/components/TaskList";
-import tasksReducer from "./state-management/reducers/tasksReducer";
 import NavBar from "./state-management/components/NavBar";
+import TaskList from "./state-management/components/TaskList";
 import TasksContext from "./state-management/contexts/tasksContext";
-import authReducer from "./state-management/reducers/authReducer";
-import AuthContext from "./state-management/contexts/authContext";
+import tasksReducer from "./state-management/reducers/tasksReducer";
 
 function App() {
   const [tasks, tasksDispatch] = useReducer(tasksReducer, []);
-  const [user, authDispatch] = useReducer(authReducer, "");
 
   return (
     <Container maxW={"10xl"}>
@@ -23,12 +21,12 @@ function App() {
           <Text fontWeight={"bolder"} mb={2}>
             NavBar
           </Text>
-          <AuthContext.Provider value={{ user, dispatch: authDispatch }}>
+          <AuthProvider>
             <TasksContext.Provider value={{ tasks, dispatch: tasksDispatch }}>
               <NavBar />
               <TaskList />
             </TasksContext.Provider>
-          </AuthContext.Provider>
+          </AuthProvider>
         </GridItem>
         <GridItem mt={10}></GridItem>
         <GridItem mt={10}></GridItem>
