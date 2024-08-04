@@ -1,4 +1,4 @@
-import { Box, Button, Flex, List, ListItem, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, List, ListItem, Text } from "@chakra-ui/react";
 import { useReducer } from "react";
 import tasksReducer from "../reducer/tasksReducer";
 
@@ -22,13 +22,17 @@ const TaskList = () => {
       <List>
         {tasks.map((task) => {
           return (
-            <ListItem key={task.id} >
-              <Flex justifyContent={"space-between"} alignItems={'center'} mb={3}>
+            <ListItem key={task.id}>
+              <Flex
+                justifyContent={"space-between"}
+                alignItems={"center"}
+                mb={3}
+              >
                 <Text>{task.title}</Text>
                 <Button
                   onClick={() => dispatch({ type: "DELETE", taskId: task.id })}
                   colorScheme="red"
-                  size={'sm'}
+                  size={"sm"}
                 >
                   Delete
                 </Button>
