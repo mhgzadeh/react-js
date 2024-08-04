@@ -1,15 +1,11 @@
 import { Container, Grid, GridItem, Text } from "@chakra-ui/react";
-import { useReducer } from "react";
 import AuthProvider from "./state-management/components/AuthProvider";
 import Counter from "./state-management/components/Counter";
 import NavBar from "./state-management/components/NavBar";
 import TaskList from "./state-management/components/TaskList";
-import TasksContext from "./state-management/contexts/tasksContext";
-import tasksReducer from "./state-management/reducers/tasksReducer";
+import TaskProvider from "./state-management/components/TaskProvider";
 
 function App() {
-  const [tasks, tasksDispatch] = useReducer(tasksReducer, []);
-
   return (
     <Container maxW={"10xl"}>
       <Grid templateColumns="repeat(4, 1fr)" columnGap={5}>
@@ -22,10 +18,10 @@ function App() {
             NavBar
           </Text>
           <AuthProvider>
-            <TasksContext.Provider value={{ tasks, dispatch: tasksDispatch }}>
+            <TaskProvider>
               <NavBar />
               <TaskList />
-            </TasksContext.Provider>
+            </TaskProvider>
           </AuthProvider>
         </GridItem>
         <GridItem mt={10}></GridItem>

@@ -1,10 +1,10 @@
 import { Box, Button, Flex, List, ListItem, Text } from "@chakra-ui/react";
 import { useContext } from "react";
-import TasksContext from "../contexts/tasksContext";
 import AuthContext from "../contexts/authContext";
+import useTasks from "../hooks/useTasks";
 
 const TaskList = () => {
-  const { tasks, dispatch } = useContext(TasksContext);
+  const { tasks, dispatch } = useTasks();
   const { user } = useContext(AuthContext);
 
   return (
