@@ -1,8 +1,8 @@
 import { Container, Grid, GridItem, Text } from "@chakra-ui/react";
-import AuthProvider from "./state-management/components/AuthProvider";
-import Counter from "./state-management/components/Counter";
+import AuthProvider from "./state-management/auth/AuthProvider";
+import Counter from "./state-management/counter/Counter";
 import NavBar from "./state-management/components/NavBar";
-import {TasksProvider, TaskList} from "./state-management/tasks";
+import { TasksProvider, TaskList } from "./state-management/tasks";
 
 function App() {
   return (

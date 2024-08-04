@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import counterReducer from "../reducers/counterReducer";
+import counterReducer from "./counterReducer";
 import { Box, Button, HStack } from "@chakra-ui/react";
 
 const Counter = () => {
