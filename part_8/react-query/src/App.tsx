@@ -8,10 +8,10 @@ function App() {
     <Container maxW={"10xl"}>
       <Grid templateColumns="repeat(4, 1fr)" columnGap={5}>
         <GridItem mt={10}>
-          <Loginstatus />
           <Counter />
         </GridItem>
         <GridItem mt={10}>
+          <Loginstatus />
           <TaskList />
         </GridItem>
         <GridItem mt={10}>
