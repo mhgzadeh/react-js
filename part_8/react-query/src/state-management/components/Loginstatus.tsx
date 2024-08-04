@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import authReducer from "../reducer/authReducer";
+import authReducer from "../reducers/authReducer";
 import { Button, HStack, Text } from "@chakra-ui/react";
 
 const Loginstatus = () => {

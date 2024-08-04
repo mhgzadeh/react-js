@@ -1,6 +1,6 @@
 import { Box, Button, Flex, List, ListItem, Text } from "@chakra-ui/react";
 import { useReducer } from "react";
-import tasksReducer from "../reducer/tasksReducer";
+import tasksReducer from "../reducers/tasksReducer";
 
 const TaskList = () => {
   const [tasks, dispatch] = useReducer(tasksReducer, []);
