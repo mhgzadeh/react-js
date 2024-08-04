@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Loginstatus from "./LoginStatus";
-import TasksContext from "../contexts/tasksContext";
+import TasksContext from "../tasks/tasksContext";
 import { Box, Text } from "@chakra-ui/react";
 
 const NavBar = () => {

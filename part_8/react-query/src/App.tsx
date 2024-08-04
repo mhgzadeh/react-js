@@ -2,8 +2,7 @@ import { Container, Grid, GridItem, Text } from "@chakra-ui/react";
 import AuthProvider from "./state-management/components/AuthProvider";
 import Counter from "./state-management/components/Counter";
 import NavBar from "./state-management/components/NavBar";
-import TaskList from "./state-management/components/TaskList";
-import TaskProvider from "./state-management/components/TaskProvider";
+import {TasksProvider, TaskList} from "./state-management/tasks";
 
 function App() {
   return (
@@ -18,10 +17,10 @@ function App() {
             NavBar
           </Text>
           <AuthProvider>
-            <TaskProvider>
+            <TasksProvider>
               <NavBar />
               <TaskList />
-            </TaskProvider>
+            </TasksProvider>
           </AuthProvider>
         </GridItem>
         <GridItem mt={10}></GridItem>
