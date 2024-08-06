@@ -1,26 +1,17 @@
-import { useReducer } from "react";
-import counterReducer from "./counterReducer";
 import { Box, Button, HStack } from "@chakra-ui/react";
+import useCounterStore from "./store";
 
 const Counter = () => {
-  // const [value, setValue] = useState(0);
-  const [value, dispatch] = useReducer(counterReducer, 0);
+  const { counter, increment, reset } = useCounterStore();
 
   return (
     <HStack justifyContent={"space-between"}>
-      <Box>Counter: ({value})</Box>
+      <Box>Counter: ({counter})</Box>
       <Box>
-        <Button
-          onClick={() => dispatch({ type: "INCREMENT" })}
-          colorScheme="blue"
-          me={3}
-        >
+        <Button onClick={() => increment()} colorScheme="blue" me={3}>
           Increment
         </Button>
-        <Button
-          onClick={() => dispatch({ type: "RESET" })}
-          colorScheme="orange"
-        >
+        <Button onClick={() => reset()} colorScheme="orange">
           Reset
         </Button>
       </Box>
