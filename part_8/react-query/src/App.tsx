@@ -1,5 +1,4 @@
 import { Container, Grid, GridItem, Text } from "@chakra-ui/react";
-import AuthProvider from "./state-management/auth/AuthProvider";
 import Counter from "./state-management/counter/Counter";
 import NavBar from "./state-management/components/NavBar";
 import { TasksProvider, TaskList } from "./state-management/tasks";
@@ -16,12 +15,10 @@ function App() {
           <Text fontWeight={"bolder"} mb={2}>
             NavBar
           </Text>
-          <AuthProvider>
-            <TasksProvider>
-              <NavBar />
-              <TaskList />
-            </TasksProvider>
-          </AuthProvider>
+          <TasksProvider>
+            <NavBar />
+            <TaskList />
+          </TasksProvider>
         </GridItem>
         <GridItem mt={10}></GridItem>
         <GridItem mt={10}></GridItem>

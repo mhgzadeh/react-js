@@ -1,18 +1,13 @@
 import { Button, HStack, Text } from "@chakra-ui/react";
-import { useContext } from "react";
-import AuthContext from "./authContext";
+import useAuthStore from "./store";
 
 const AuthStatus = () => {
-  const { user, dispatch } = useContext(AuthContext);
+  const { user, login, logout } = useAuthStore();
 
   if (user)
     return (
       <HStack>
-        <Button
-          onClick={() => dispatch({ type: "LOGOUT" })}
-          colorScheme={"blue"}
-          mb={2}
-        >
+        <Button onClick={() => logout()} colorScheme={"blue"} mb={2}>
           Logout
         </Button>
         <Text>{user}</Text>
@@ -20,11 +15,7 @@ const AuthStatus = () => {
     );
 
   return (
-    <Button
-      onClick={() => dispatch({ type: "LOGIN", username: "Mohammad" })}
-      colorScheme="red"
-      mb={2}
-    >
+    <Button onClick={() => login('Mohammad')} colorScheme="red" mb={2}>
       Login
     </Button>
   );
