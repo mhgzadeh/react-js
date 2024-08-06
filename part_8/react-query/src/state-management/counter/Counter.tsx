@@ -5,7 +5,7 @@ const Counter = () => {
   const { counter, increment, reset } = useCounterStore();
 
   return (
-    <HStack justifyContent={"space-between"}>
+    <HStack>
       <Box>Counter: ({counter})</Box>
       <Box>
         <Button onClick={() => increment()} colorScheme="blue" me={3}>

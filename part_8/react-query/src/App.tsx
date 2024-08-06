@@ -6,7 +6,7 @@ import { TasksProvider, TaskList } from "./state-management/tasks";
 function App() {
   return (
     <Container maxW={"10xl"}>
-      <Grid templateColumns="repeat(4, 1fr)" columnGap={5}>
+      <Grid templateColumns="repeat(2, 1fr)" columnGap={5}>
         <GridItem mt={10}>
           <Text fontWeight={"bolder"}>Reducer</Text>
           <Counter />
@@ -20,8 +20,6 @@ function App() {
             <TaskList />
           </TasksProvider>
         </GridItem>
-        <GridItem mt={10}></GridItem>
-        <GridItem mt={10}></GridItem>
       </Grid>
     </Container>
   );
