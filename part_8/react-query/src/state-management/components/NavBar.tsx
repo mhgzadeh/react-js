@@ -6,7 +6,10 @@ import useCounterStore from "../counter/store";
 
 const NavBar = () => {
   const { tasks } = useContext(TasksContext);
-  const { counter } = useCounterStore();
+  const counter = useCounterStore((s) => s.counter);
+
+  console.log("Render Navbar");
+
   return (
     <Box>
       <AuthStatus />
