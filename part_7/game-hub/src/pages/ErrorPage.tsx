@@ -1,8 +1,10 @@
-import { Container, Grid, GridItem } from "@chakra-ui/react";
-import { Outlet } from "react-router-dom";
+import { Container, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
+import { isRouteErrorResponse, Outlet, useRouteError } from "react-router-dom";
 import NavBar from "../components/NavBar";
 
-const Layout = () => {
+// Todos: duplicate codes from the layout
+const ErrorPage = () => {
+  const error = useRouteError();
   return (
     <Container maxW={"8xl"}>
       <Grid
@@ -24,6 +26,15 @@ const Layout = () => {
           <NavBar />
         </GridItem>
 
+        <GridItem rowSpan={1} colSpan={5}>
+          <Heading> Oops</Heading>
+          <Text>
+            {isRouteErrorResponse(error)
+              ? error.statusText
+              : "An unexpected error ocurred."}
+          </Text>
+        </GridItem>
+
         <Outlet />
 
         <GridItem rowSpan={1} colSpan={5}>
@@ -34,4 +45,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default ErrorPage;
