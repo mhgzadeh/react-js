@@ -5,7 +5,7 @@ const NavBar = () => {
     <nav
       className="navbar navbar-expand-lg bg-light mb-5"
     >
-      <div className="container-fluid">
+      <div className="container">
         <Link className="navbar-brand" to={"/"}>
           My App
         </Link>
