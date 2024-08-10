@@ -1,13 +1,6 @@
+import { GridItem, Heading, Spinner, Text } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
-import {
-  GridItem,
-  Heading,
-  HStack,
-  Spinner,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
