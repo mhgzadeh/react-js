@@ -8,9 +8,9 @@ const HomePage = () => {
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt,
         mollitia!
       </p>
-      <Link to={"/users"}>Users</Link>
+      <Link className="text-warning" to={"/users"}>Users</Link>
       <br />
-      <Link to={"/contact"}>Contact</Link>
+      <Link className="text-warning" to={"/contact"}>Contact</Link>
     </div>
   );
 };
