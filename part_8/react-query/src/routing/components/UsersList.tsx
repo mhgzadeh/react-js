@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const UsersList = () => {
   const users = [
     { id: 1, name: "Mosh" },
-    { id: 2, name: "John" },
+    { id: 2, name: "Mohammad" },
     { id: 3, name: "Alice" },
   ];
   return ( 
