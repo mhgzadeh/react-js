@@ -11,19 +11,24 @@ const axiosInstance = axios.create({
   params: { key: "44f36ab4590e47a8adf5c6355adaae08" },
 });
 
-
 class APIClient<T> {
   endpoint: string;
 
   constructor(endpoint: string) {
-    this.endpoint = endpoint
+    this.endpoint = endpoint;
   }
 
   getAll = (config: AxiosRequestConfig) => {
     return axiosInstance
       .get<FetchResponse<T>>(this.endpoint, config)
-      .then(res => res.data)
-  }
+      .then((res) => res.data);
+  };
+
+  get = (id: number | string) => {
+    return axiosInstance
+      .get<T>(this.endpoint + "/" + id)
+      .then((res) => res.data);
+  };
 }
 
 export default APIClient;
